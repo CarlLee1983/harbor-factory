@@ -1,0 +1,81 @@
+.character-preview {
+  --preview-color: #bb593b;
+  margin-block-end: 14px;
+  scroll-margin-block: 12px 70px;
+  border: 1px solid #b49764;
+  border-radius: 8px;
+  color: #332d25;
+  background: #f6e6c4;
+}
+
+.character-preview:not([hidden]) + [data-lineup-actions] { margin-block-end: 19px; }
+
+.character-preview-caption {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 2px 8px;
+  padding: 8px 11px;
+  border-block-end: 1px solid #8e6e483d;
+  border-inline-start: 4px solid var(--preview-color);
+  border-start-start-radius: inherit;
+}
+
+.character-preview-caption strong { font-size: .95rem; }
+.character-preview-caption span { color: #5e513f; font-size: .75rem; }
+
+.character-preview-stage {
+  position: relative;
+  isolation: isolate;
+  block-size: clamp(196px, 28dvh, 270px);
+  background:
+    radial-gradient(ellipse at 43% 37%, #fff6df 7%, transparent 70%),
+    linear-gradient(150deg, #eedcbb, color-mix(in srgb, var(--preview-color) 40%, #e1d2ae));
+}
+
+.character-preview-stage::before {
+  content: '';
+  position: absolute;
+  inset: auto 19% 8%;
+  z-index: -1;
+  block-size: 13%;
+  background: radial-gradient(ellipse, #4033234d, transparent 70%);
+}
+
+.character-preview-canvas,
+.character-preview-image {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.character-preview-image {
+  padding: 12px;
+  object-fit: contain;
+}
+
+.character-preview-controls {
+  display: flex;
+  gap: 8px;
+  padding: 5px 8px 7px;
+  border-block-start: 1px solid #8e6e483d;
+}
+
+.character-preview-controls button {
+  flex: 1 1 0;
+  min-inline-size: 44px;
+  min-block-size: 44px;
+  padding: 3px 5px;
+  border: 1px solid #a38d6a;
+  border-radius: 5px;
+  background: #fff3d8;
+  color: #41382d;
+  font-size: .78rem;
+  font-weight: 700;
+}
+
+.character-preview-controls button:hover { background: #fff9ec; }
+.selection-layout .character-preview-controls button:focus-visible { outline-color: #176963; }
+.character-preview-controls button span { font-size: 1rem; line-height: 1; }
+.character-preview [hidden] { display: none; }

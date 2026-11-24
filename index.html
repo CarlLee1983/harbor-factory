@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#082e39">
+    <title>港灣街區 · 地產桌遊</title>
+    <link rel="preload" href="/src/harbor.webp" as="image" fetchpriority="high">
+  </head>
+  <body>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true">⚓︎</span>
+          <strong>港灣街區</strong>
+        </div>
+        <div class="table-controls">
+          <button type="button" id="dice-audio" aria-label="骰子音效" aria-pressed="false" hidden>音效 <span>關</span></button>
+          <button type="button" id="fullscreen-toggle" hidden>全螢幕</button>
+          <span class="table-mode"><span aria-hidden="true"></span>1–4 人同機遊玩</span>
+        </div>
+      </div>
+    </header>
+    <main id="app"></main>
+    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/fullscreen.js"></script>
+  </body>
+</html>

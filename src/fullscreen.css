@@ -1,0 +1,41 @@
+#fullscreen-toggle {
+  min-inline-size: 5.75rem;
+  min-block-size: 40px;
+  padding: 0 8px;
+  border: 1px solid #c9b1776b;
+  border-radius: 6px;
+  background: transparent;
+  color: #e2cf9f;
+  font-size: .79rem;
+  white-space: nowrap;
+}
+
+#fullscreen-toggle:hover,
+:is(:fullscreen, [data-viewport-mode]) #fullscreen-toggle {
+  background: #28515a;
+  color: #fff1ce;
+}
+
+#fullscreen-toggle:focus-visible { outline-color: #f5d491; }
+
+[data-viewport-mode] { scroll-padding-block-start: 66px; }
+
+[data-viewport-mode] .masthead {
+  position: sticky;
+  inset-block-start: 0;
+  z-index: 2;
+  background: #092e3b;
+}
+
+[data-viewport-mode] .masthead-inner,
+[data-viewport-mode] #app { max-width: none; }
+
+[data-viewport-mode] #app:has(.game-layout) {
+  padding-inline: max(4px, env(safe-area-inset-left)) max(4px, env(safe-area-inset-right));
+}
+
+[data-viewport-mode] .table-mode { display: none; }
+
+@media (max-width: 550px) {
+  .masthead .table-mode { display: none; }
+}

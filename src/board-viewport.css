@@ -1,0 +1,88 @@
+.board-zoom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 5px;
+  padding-block-end: 8px;
+  font-size: .78rem;
+  font-weight: 750;
+}
+
+.board-zoom output {
+  min-inline-size: 5ch;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.board-zoom button {
+  min-inline-size: 36px;
+  min-block-size: 36px;
+  padding: 4px 9px;
+  border: 1px solid #947e55;
+  border-radius: 5px;
+  background: #f9edcf;
+  color: #264842;
+}
+
+.board-zoom button[aria-disabled="false"]:hover {
+  background: #efdfba;
+}
+
+.board-zoom button[aria-disabled="true"] {
+  background: #e2dcc2;
+  color: #605b48;
+  cursor: default;
+}
+
+.board-viewport {
+  inline-size: 100%;
+  overflow: clip;
+}
+
+.board-viewport[data-zoomed] {
+  aspect-ratio: 980 / 610;
+  overflow: auto;
+  overscroll-behavior-inline: contain;
+}
+
+.board-viewport[data-zoomed] > .board-canvas {
+  inline-size: calc(100% * var(--board-zoom));
+  cursor: grab;
+  user-select: none;
+}
+
+.board-viewport > .board-canvas {
+  position: relative;
+}
+
+/* Phaser sets inline dimensions on a timer. The viewport must redraw at the new display size immediately. */
+.board-viewport canvas[data-renderer="canvas"] {
+  position: absolute;
+  inset: 0;
+  inline-size: 100% !important;
+  block-size: 100% !important;
+  margin: 0 !important;
+}
+
+.board-viewport[data-dragging] > .board-canvas * {
+  cursor: grabbing;
+}
+
+.board-viewport:focus-visible {
+  outline: 3px solid #b04a1f;
+  outline-offset: 2px;
+}
+
+@media (max-width: 600px) and (orientation: portrait) {
+  .board-viewport[data-zoomed] {
+    aspect-ratio: 6 / 5;
+  }
+}
+
+@media (pointer: coarse) {
+  .board-zoom button {
+    min-inline-size: 44px;
+    min-block-size: 44px;
+  }
+}

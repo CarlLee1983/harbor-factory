@@ -1,0 +1,136 @@
+.board-3d {
+  position: relative;
+  container-type: inline-size;
+  overflow: hidden;
+  background: #244356;
+}
+
+.board-3d canvas,
+.board-projection {
+  position: absolute;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.board-projection {
+  pointer-events: none;
+  user-select: none;
+  color: #302824;
+  font-family: "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
+}
+
+.board-tile-label {
+  position: absolute;
+}
+
+.board-tile-caption {
+  position: absolute;
+  inset: 0 auto auto 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  width: max-content;
+  transform: translate(
+    calc(-50% + var(--out-x) + var(--clear-x, 0px)),
+    calc(-50% + var(--out-y) + var(--clear-y, 0px))
+  );
+  border: 1px solid #6c5946;
+  border-radius: 3px;
+  padding: 1px 3px;
+  background: #f7e4bf;
+  font-size: clamp(8px, 1.31cqi, 12px);
+  font-weight: 800;
+  line-height: 1.04;
+  white-space: nowrap;
+  box-shadow: 0 1px 3px #16222f57;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.board-tile-label[data-kind="event"] .board-tile-caption {
+  border-color: #335757;
+  color: #153432;
+  background: #c0dcc4;
+}
+
+.board-tile-label[data-kind="start"] .board-tile-caption {
+  color: #fff2ce;
+  border-color: #132f32;
+  background: #2a614f;
+}
+
+.board-tile-label[data-selected] {
+  z-index: 1;
+}
+
+.board-tile-label[data-selected] .board-tile-caption {
+  outline: 1px solid #ffe69b;
+  background: #ffe29b;
+  color: #382722;
+}
+
+.board-owner,
+.board-seat {
+  display: inline-grid;
+  place-items: center;
+  color: #fff4d6;
+  background: #25383d;
+  border: 1px solid #fff1d5;
+  border-radius: 3px;
+  font-weight: 850;
+  line-height: 1;
+}
+
+.board-owner {
+  width: 1.28em;
+  height: 1.28em;
+  font-size: .9em;
+  box-shadow: 0 0 0 1px var(--seat-color);
+}
+
+.board-owner[hidden] {
+  display: none;
+}
+
+@container (max-width: 500px) {
+  .board-tile-label:not([data-selected]) .board-tile-title,
+  .board-tile-label:not([data-selected]) .board-tile-caption:not(:has(.board-owner:not([hidden]))) {
+    display: none;
+  }
+
+  .board-tile-caption {
+    pointer-events: none;
+  }
+}
+
+@container (max-width: 300px) {
+  .board-tile-title,
+  .board-tile-caption:not(:has(.board-owner:not([hidden]))) {
+    display: none;
+  }
+
+  .board-tile-caption {
+    padding: 0;
+    border: 0;
+    box-shadow: none;
+  }
+}
+
+.board-seat {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  width: 1.38em;
+  height: 1.38em;
+  font-size: clamp(9px, 1.68cqi, 15px);
+  box-shadow: 0 0 0 1px #293139, 0 2px 0 #15333b65;
+}
+
+.board-seat[aria-current="true"] {
+  z-index: 2;
+  background: #ffdb80;
+  color: #31241c;
+  border-color: #533b2a;
+  box-shadow: 0 0 0 1px #ffe8ac, 0 2px 0 #15333b65;
+}
